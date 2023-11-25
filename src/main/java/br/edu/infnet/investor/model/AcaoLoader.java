@@ -1,8 +1,8 @@
 package br.edu.infnet.investor.model;
 
+import br.edu.infnet.investor.model.domain.Acao;
 import br.edu.infnet.investor.model.domain.Investidor;
-import br.edu.infnet.investor.model.domain.Portifolio;
-import br.edu.infnet.investor.model.service.InvestidorService;
+import br.edu.infnet.investor.model.service.AcoesService;
 import br.edu.infnet.investor.model.service.PortifolioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
@@ -13,17 +13,15 @@ import org.springframework.stereotype.Component;
 import java.io.BufferedReader;
 import java.io.FileReader;
 
-@Order(5)
+@Order(2)
 @Component
-public class PortifolioLoader implements ApplicationRunner {
+public class AcaoLoader implements ApplicationRunner {
 
     @Autowired
-    private PortifolioService portifolioService;
-
+    private AcoesService acoesService;
     @Override
     public void run(ApplicationArguments args) throws Exception {
-
-        FileReader file = new FileReader("files/portifolios.txt");
+        FileReader file = new FileReader("files/acoes.txt");
         BufferedReader leitura = new BufferedReader(file);
 
         String linha = leitura.readLine();
@@ -33,17 +31,20 @@ public class PortifolioLoader implements ApplicationRunner {
         while(linha != null) {
             campos = linha.split(";");
 
-            Investidor investidor = new Investidor(campos[2],campos[3], campos[4]);
-            Portifolio portifolio = new Portifolio(campos[0],campos[1], investidor);
+            Acao acao = new Acao();
+            acao.setEmpresa(campos[0]);
+            acao.setCodigo(campos[1]);
+            acao.setNome(campos[2]);
+            acao.setValor(Float.parseFloat(campos[3]));
 
 
-            portifolioService.incluir(portifolio);
+            acoesService.incluir(acao);
 
             linha = leitura.readLine();
         }
 
-        for(Portifolio portifolio : portifolioService.obterLista()) {
-            System.out.println("[PORTIFOLIO] " + portifolio);
+        for(Acao acao : acoesService.obterLista()) {
+            System.out.println("[AÇÃO] " + acao);
         }
 
         leitura.close();

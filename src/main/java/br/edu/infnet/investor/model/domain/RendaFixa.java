@@ -4,6 +4,15 @@ public class RendaFixa extends Ativo{
 
     private String tipo;
     private float rentabilidade;
+    private String codigo;
+
+    public String getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
+    }
 
     public float getRentabilidade() {
         return rentabilidade;

@@ -1,0 +1,3 @@
+FIXA11;CRI;12;Pan Cri 2030;2000
+FIXA1;Tesouro;13.75;Tesouro Pré;25.56
+FIXA2;Tesouro+;14;Tesouro Renda +2045;110.20

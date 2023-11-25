@@ -56,4 +56,15 @@ public class Portifolio {
     public void setAtivos(List<Ativo> ativos) {
         this.ativos = ativos;
     }
+
+    @Override
+    public String toString() {
+        return "Portifolio{" +
+                "name='" + name + '\'' +
+                ", descricao='" + descricao + '\'' +
+                ", data=" + data +
+                ", investidor=" + investidor +
+                ", ativos=" + ativos +
+                '}';
+    }
 }

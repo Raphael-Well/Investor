@@ -1,9 +1,7 @@
 package br.edu.infnet.investor.model.domain;
 
-public class Acoes extends Ativo{
-
+public class FundosImobiliario extends Ativo{
     private String Empresa;
-
     private String codigo;
 
     public String getEmpresa() {
