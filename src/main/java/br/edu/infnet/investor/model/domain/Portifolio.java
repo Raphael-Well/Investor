@@ -1,14 +1,33 @@
 package br.edu.infnet.investor.model.domain;
 
+import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
+
 import java.time.LocalDateTime;
 import java.util.List;
 
+@Getter
+@Setter
+@Entity
 public class Portifolio {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
     private String name;
     private String descricao;
     private LocalDateTime data;
+
+    @ManyToOne
     private Investidor investidor;
+
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JoinTable(
+            name = "portifolio_ativo",
+            joinColumns = @JoinColumn(name = "portifolio_id"),
+            inverseJoinColumns = @JoinColumn(name = "ativo_id")
+    )
     private List<Ativo> ativos;
 
     public Portifolio(String name, String descricao, Investidor investidor) {
@@ -17,44 +36,8 @@ public class Portifolio {
         this.investidor = investidor;
     }
 
-    public String getName() {
-        return name;
-    }
+    public Portifolio() {
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getDescricao() {
-        return descricao;
-    }
-
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
-    }
-
-    public LocalDateTime getData() {
-        return data;
-    }
-
-    public void setData(LocalDateTime data) {
-        this.data = data;
-    }
-
-    public Investidor getInvestidor() {
-        return investidor;
-    }
-
-    public void setInvestidor(Investidor investidor) {
-        this.investidor = investidor;
-    }
-
-    public List<Ativo> getAtivos() {
-        return ativos;
-    }
-
-    public void setAtivos(List<Ativo> ativos) {
-        this.ativos = ativos;
     }
 
     @Override

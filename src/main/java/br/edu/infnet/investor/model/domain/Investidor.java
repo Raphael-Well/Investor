@@ -1,10 +1,25 @@
 package br.edu.infnet.investor.model.domain;
 
+import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
+
+import java.util.List;
+
+@Getter
+@Setter
+@Entity
 public class Investidor {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
     private String nome;
     private String email;
     private String cpf;
+
+    @OneToMany(mappedBy = "investidor", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Portifolio> portifolios;
 
     public Investidor(String nome, String email, String cpf) {
         this.nome = nome;
@@ -12,29 +27,10 @@ public class Investidor {
         this.cpf = cpf;
     }
 
-    public String getNome() {
-        return nome;
+    public Investidor() {
+
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getCpf() {
-        return cpf;
-    }
-
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
-    }
 
     @Override
     public String toString() {
