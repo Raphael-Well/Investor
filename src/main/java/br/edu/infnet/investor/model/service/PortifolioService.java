@@ -1,6 +1,10 @@
 package br.edu.infnet.investor.model.service;
 
+import br.edu.infnet.investor.model.domain.Investidor;
 import br.edu.infnet.investor.model.domain.Portifolio;
+import br.edu.infnet.investor.repositories.InvestidorRepository;
+import br.edu.infnet.investor.repositories.PortifolioRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
@@ -10,13 +14,14 @@ import java.util.Map;
 @Service
 public class PortifolioService {
 
-    private Map<String, Portifolio> mapa = new HashMap<String, Portifolio>();
+    @Autowired
+    private PortifolioRepository portifolioRepository;
 
     public void incluir(Portifolio portifolio){
-        mapa.put(portifolio.getName(), portifolio);
+        portifolioRepository.save(portifolio);
     }
 
     public Collection<Portifolio> obterLista(){
-        return mapa.values();
+        return (Collection<Portifolio>) portifolioRepository.findAll();
     }
 }
