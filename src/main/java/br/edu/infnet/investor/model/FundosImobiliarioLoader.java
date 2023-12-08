@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 import java.io.BufferedReader;
 import java.io.FileReader;
 
-@Order(3)
+@Order(1)
 @Component
 public class FundosImobiliarioLoader implements ApplicationRunner {
 
@@ -36,6 +36,7 @@ public class FundosImobiliarioLoader implements ApplicationRunner {
             fundos.setCodigo(campos[1]);
             fundos.setNome(campos[2]);
             fundos.setValor(Float.parseFloat(campos[3]));
+            fundos.setQuantidade(Integer.parseInt(campos[4]));
 
 
             fundosImobiliariosService.incluir(fundos);

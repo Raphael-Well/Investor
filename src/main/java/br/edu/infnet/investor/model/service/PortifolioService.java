@@ -2,6 +2,7 @@ package br.edu.infnet.investor.model.service;
 
 import br.edu.infnet.investor.model.domain.Investidor;
 import br.edu.infnet.investor.model.domain.Portifolio;
+import br.edu.infnet.investor.model.domain.RendaFixa;
 import br.edu.infnet.investor.repositories.InvestidorRepository;
 import br.edu.infnet.investor.repositories.PortifolioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,5 +24,9 @@ public class PortifolioService {
 
     public Collection<Portifolio> obterLista(){
         return (Collection<Portifolio>) portifolioRepository.findAll();
+    }
+
+    public Portifolio buscar(int id){
+        return portifolioRepository.findById(id).orElse(null);
     }
 }

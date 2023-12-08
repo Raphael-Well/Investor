@@ -18,7 +18,7 @@ public class Investidor {
     private String email;
     private String cpf;
 
-    @OneToMany(mappedBy = "investidor", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany()
     private List<Portifolio> portifolios;
 
     public Investidor(String nome, String email, String cpf) {

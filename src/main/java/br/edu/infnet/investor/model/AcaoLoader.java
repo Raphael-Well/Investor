@@ -1,9 +1,9 @@
 package br.edu.infnet.investor.model;
 
 import br.edu.infnet.investor.model.domain.Acao;
-import br.edu.infnet.investor.model.domain.Investidor;
+import br.edu.infnet.investor.model.domain.RendaFixa;
 import br.edu.infnet.investor.model.service.AcoesService;
-import br.edu.infnet.investor.model.service.PortifolioService;
+import br.edu.infnet.investor.model.service.RendaFixaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 import java.io.BufferedReader;
 import java.io.FileReader;
 
-@Order(2)
+@Order(3)
 @Component
 public class AcaoLoader implements ApplicationRunner {
 
@@ -36,7 +36,6 @@ public class AcaoLoader implements ApplicationRunner {
             acao.setCodigo(campos[1]);
             acao.setNome(campos[2]);
             acao.setValor(Float.parseFloat(campos[3]));
-
 
             acoesService.incluir(acao);
 

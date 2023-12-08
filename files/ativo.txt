@@ -1,0 +1,3 @@
+A;Petrobras;PETR4
+R;Tesouro Direto;5%;TD123
+F;Empresa de Fundos;FI789

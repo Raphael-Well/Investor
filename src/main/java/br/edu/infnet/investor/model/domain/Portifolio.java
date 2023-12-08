@@ -1,5 +1,6 @@
 package br.edu.infnet.investor.model.domain;
 
+import jakarta.annotation.Nonnull;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -19,21 +20,12 @@ public class Portifolio {
     private String descricao;
     private LocalDateTime data;
 
-    @ManyToOne
-    private Investidor investidor;
-
-    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-    @JoinTable(
-            name = "portifolio_ativo",
-            joinColumns = @JoinColumn(name = "portifolio_id"),
-            inverseJoinColumns = @JoinColumn(name = "ativo_id")
-    )
+    @OneToMany()
     private List<Ativo> ativos;
 
-    public Portifolio(String name, String descricao, Investidor investidor) {
+    public Portifolio(String name, String descricao) {
         this.name = name;
         this.descricao = descricao;
-        this.investidor = investidor;
     }
 
     public Portifolio() {
@@ -46,8 +38,6 @@ public class Portifolio {
                 "name='" + name + '\'' +
                 ", descricao='" + descricao + '\'' +
                 ", data=" + data +
-                ", investidor=" + investidor +
-                ", ativos=" + ativos +
                 '}';
     }
 }
