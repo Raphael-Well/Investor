@@ -12,6 +12,7 @@ import org.springframework.stereotype.Component;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -44,6 +45,7 @@ public class PortifolioLoader implements ApplicationRunner {
 
             Portifolio portifolio = new Portifolio(campos[0],campos[1]);
             portifolio.setAtivos(ativos);
+            portifolio.setData(LocalDateTime.now());
             portifolioService.incluir(portifolio);
 
             linha = leitura.readLine();

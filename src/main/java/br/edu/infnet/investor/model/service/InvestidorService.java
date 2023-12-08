@@ -24,4 +24,9 @@ public class InvestidorService {
     public Investidor buscar(int id){
         return investidorRepository.findById(id).orElse(null);
     }
+
+    public void excluir(int id){
+        Investidor investidor = buscar(id);
+        investidorRepository.delete(investidor);
+    }
 }
