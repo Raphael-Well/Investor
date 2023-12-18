@@ -1,6 +1,7 @@
 package br.edu.infnet.investor.model;
 
 import br.edu.infnet.investor.model.domain.Ativo;
+import br.edu.infnet.investor.model.domain.Endereco;
 import br.edu.infnet.investor.model.domain.Investidor;
 import br.edu.infnet.investor.model.domain.Portifolio;
 import br.edu.infnet.investor.model.service.InvestidorService;
@@ -44,6 +45,7 @@ public class InvestidorLoader implements ApplicationRunner {
             campos = linha.split(";");
 
             Investidor investidor = new Investidor(campos[0],campos[1], campos[2]);
+            investidor.setEndereco(new Endereco(campos[3]));
 
             if (isFirstInvestor) {
                 investidor.setPortifolios(portifolios);

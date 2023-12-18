@@ -1,4 +1,4 @@
-Raphael;rapha@rapha.com;12345678901
-huguinho;hugo@hugo.com;12312312312
-zezinho;jose@jose.com;23423423423
-luizinho;luiz@luiz.com;34534534534
+Raphael;rapha@rapha.com;12345678901;20010020
+huguinho;hugo@hugo.com;12312312312;20010020
+zezinho;jose@jose.com;23423423423;20010020
+luizinho;luiz@luiz.com;34534534534;20010020

@@ -29,4 +29,9 @@ public class PortifolioService {
     public Portifolio buscar(int id){
         return portifolioRepository.findById(id).orElse(null);
     }
+
+    public void excluir(int id){
+        Portifolio portifolio = buscar(id);
+        portifolioRepository.delete(portifolio);
+    }
 }

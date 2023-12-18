@@ -1,9 +1,6 @@
 package br.edu.infnet.investor.model.service;
 
-import br.edu.infnet.investor.model.domain.FundosImobiliario;
-import br.edu.infnet.investor.model.domain.Investidor;
-import br.edu.infnet.investor.model.domain.Portifolio;
-import br.edu.infnet.investor.model.domain.RendaFixa;
+import br.edu.infnet.investor.model.domain.*;
 import br.edu.infnet.investor.repositories.PortifolioRepository;
 import br.edu.infnet.investor.repositories.RendaFixaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,5 +25,10 @@ public class RendaFixaService {
 
     public RendaFixa buscar(int id){
         return rendaFixaRepository.findById(id).orElse(null);
+    }
+
+    public void excluir(int id){
+        RendaFixa rendaFixa = buscar(id);
+        rendaFixaRepository.delete(rendaFixa);
     }
 }

@@ -1,5 +1,6 @@
 package br.edu.infnet.investor.model.service;
 
+import br.edu.infnet.investor.model.domain.Endereco;
 import br.edu.infnet.investor.model.domain.Investidor;
 import br.edu.infnet.investor.repositories.InvestidorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,8 +13,15 @@ public class InvestidorService {
 
     @Autowired
     private InvestidorRepository investidorRepository;
+    @Autowired
+    private EnderecoService enderecoService;
 
     public void incluir(Investidor investidor){
+        String cep = investidor.getEndereco().getCep();
+
+        Endereco endereco = enderecoService.buscarCep(cep);
+
+        investidor.setEndereco(endereco);
         investidorRepository.save(investidor);
     }
 

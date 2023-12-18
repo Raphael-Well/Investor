@@ -28,4 +28,9 @@ public class FundosImobiliariosService {
     public FundosImobiliario buscar(int id){
         return fundosImobiliarioRepository.findById(id).orElse(null);
     }
+
+    public void excluir(int id){
+        FundosImobiliario fundosImobiliario = buscar(id);
+        fundosImobiliarioRepository.delete(fundosImobiliario);
+    }
 }

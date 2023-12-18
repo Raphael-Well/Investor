@@ -18,6 +18,10 @@ public class Investidor {
     private String email;
     private String cpf;
 
+    @OneToOne(cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "idEndereco")
+    private Endereco endereco;
+
     @OneToMany()
     private List<Portifolio> portifolios;
 
@@ -30,7 +34,6 @@ public class Investidor {
     public Investidor() {
 
     }
-
 
     @Override
     public String toString() {
