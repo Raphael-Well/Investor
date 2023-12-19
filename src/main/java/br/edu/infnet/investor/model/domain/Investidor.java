@@ -1,5 +1,6 @@
 package br.edu.infnet.investor.model.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -23,6 +24,7 @@ public class Investidor {
     private Endereco endereco;
 
     @OneToMany()
+    @JoinColumn(name = "idPortifolios")
     private List<Portifolio> portifolios;
 
     public Investidor(String nome, String email, String cpf) {

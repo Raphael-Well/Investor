@@ -36,14 +36,16 @@ public class PortifolioLoader implements ApplicationRunner {
 
         String linha = leitura.readLine();
 
-        String[] campos = null;
+        String[] campos;
 
         List<Ativo> ativos = (List<Ativo>) ativoService.obterLista();
 
         while(linha != null) {
             campos = linha.split(";");
 
-            Portifolio portifolio = new Portifolio(campos[0],campos[1]);
+            Portifolio portifolio = new Portifolio();
+            portifolio.setName(campos[0]);
+            portifolio.setDescricao(campos[1]);
             portifolio.setAtivos(ativos);
             portifolio.setData(LocalDateTime.now());
             portifolioService.incluir(portifolio);

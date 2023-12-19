@@ -1,5 +1,6 @@
 package br.edu.infnet.investor.model.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.annotation.Nonnull;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -20,13 +21,17 @@ public class Portifolio {
     private String descricao;
     private LocalDateTime data;
 
-    @OneToMany()
-    private List<Ativo> ativos;
+    @ManyToOne
+    @JoinColumn(name = "idInvestidor")
+    @JsonIgnore
+    private Investidor investidor;
 
-    public Portifolio(String name, String descricao) {
-        this.name = name;
-        this.descricao = descricao;
-    }
+    @ManyToMany
+    @JoinTable(
+            name = "portifolio_ativo",
+            joinColumns = @JoinColumn(name = "portifolio_id"),
+            inverseJoinColumns = @JoinColumn(name = "ativo_id"))
+    private List<Ativo> ativos;
 
     public Portifolio() {
 
